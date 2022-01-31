@@ -3,14 +3,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const formTag = document.forms.validForm;
     formTag.addEventListener('submit', (EO) => {
-        EO.preventDefault();
         funBlur(EO, "develop", "develop-err");
         funBlur(EO, "name-site", "name-site-err");
         funBlur(EO, "url", "url-err");
         funBlur(EO, "email", "email-err");
         funBlur(EO, "colvo", "colvo-err");
         funBlur(EO, "date", "date-err");
-        funBlur(EO, "answer", "answer-err");
+        funblurCheckbox(EO);
+        blurRadioInputs(EO);
         console.log("form----------validation");
     });
 
@@ -22,7 +22,6 @@ window.addEventListener('DOMContentLoaded', () => {
     function funBlur(EO, name = EO.target.name, err) {
         //разработчики
         EO = EO || window.event;
-        EO.preventDefault();
         switch (name) {
             case "develop":
                 err = "develop-err";
@@ -42,9 +41,6 @@ window.addEventListener('DOMContentLoaded', () => {
             case "email":
                 err = "email-err";
                 break;
-            case "answer":
-                err = "answer-err";
-                break;
         }
         const input = document.querySelector("input[name=" + name + "]");
         let provInput = input.value.trim();
@@ -59,20 +55,16 @@ window.addEventListener('DOMContentLoaded', () => {
             var day = a[8] + a[9];//d+d=dd
             var inputDate = new Date(year, month, day);
         }
-
-        if(name == "answer"){
-            const inputs = document.querySelectorAll("input[name=" + name + "]");
-            console.log(inputs);
-        }
-
-        if (provInput == "" || provInput.length > 30 || +provInput < 0 || inputDate > justNow) {
+        
+        if (provInput == "" || provInput.length > 30 || +provInput < 0 || (inputDate > justNow)) {
             if (!input.classList.contains('error')) {
+                EO.preventDefault();
                 input.classList.add('error');
                 input.classList.remove('noterror');
                 var span = document.createElement("span");
                 span.classList.add(err);
-                const develop = document.createTextNode('error');
-                span.append(develop);
+                const nameField = document.createTextNode('error');
+                span.append(nameField);
                 input.parentNode.parentNode.appendChild(span);
             }
 
@@ -86,5 +78,79 @@ window.addEventListener('DOMContentLoaded', () => {
         }
         // console.log(EO.target.parentNode.parentNode.lastElementChild);
     }
+
+    const inputCheckbox=document.querySelector('input[type="checkbox"]');
+    inputCheckbox.addEventListener('change',funblurCheckbox);
+
+    function funblurCheckbox(EO){
+        EO.preventDefault();
+        const sp = document.querySelector(".checkbox-err");
+        if (sp) {
+            inputCheckbox.parentNode.parentNode.lastElementChild.remove();
+        }
+        if(inputCheckbox.checked){
+            inputCheckbox.classList.add('noterror');
+            inputCheckbox.classList.remove('error');
+            const sp = document.querySelector(".checkbox-err");
+            if (sp) {
+                inputCheckbox.parentNode.parentNode.lastElementChild.remove();
+            }
+        }else{
+            inputCheckbox.classList.add('error');
+            inputCheckbox.classList.remove('noterror');
+            let span1 = document.createElement("span");
+            span1.classList.add("checkbox-err");
+            const text1 = document.createTextNode('error');
+            span1.append(text1);
+            inputCheckbox.parentNode.parentNode.append(span1);
+        }
+    }
+
+    const inputRadio = document.querySelectorAll("input[type='radio']");
+    const spanContentBox = document.querySelector(".span-content-box");
+    inputRadio.forEach(item=>{
+        item.addEventListener('change',blurRadioInputs);
+    });
+
+    function blurRadioInputs(EO){
+        EO.preventDefault();
+        const sp = document.querySelector(".radio-err");
+        if (sp) {
+            spanContentBox.parentNode.parentNode.lastChild.remove();
+        }
+        if(EO.target.name=="validForm"){
+            var count=0;
+            inputRadio.forEach(item=>{
+                if(!item.checked){
+                    count++;
+                }
+            });
+            if(count==3){
+                let span1 = document.createElement("span");
+                span1.classList.add("radio-err");
+                const text1 = document.createTextNode('error');
+                span1.append(text1);
+                spanContentBox.parentNode.parentNode.append(span1);
+            }
+        }
+        if(EO.target.name == "answer" ){
+               if(EO.target.value=="3"){
+                   let span1 = document.createElement("span");
+                   span1.classList.add("radio-err");
+                   const text1 = document.createTextNode('error');
+                   span1.append(text1);
+                   spanContentBox.parentNode.parentNode.append(span1);
+               }else{
+                   const sp = document.querySelector(".radio-err");
+                   if (sp) {
+                       spanContentBox.parentNode.parentNode.lastChild.remove();
+                   }
+               }
+               
+           }
+
+    }
+
+  
 
 });

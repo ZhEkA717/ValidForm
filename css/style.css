@@ -15,6 +15,7 @@ input[type="text"]{
     width: 300px;
     height: 25px;
 }
+
 input[type="number"],
 input[type="date"]{
     width: 130px;
@@ -30,7 +31,20 @@ textarea{
 .noterror{
     border: 2px solid green;
 }
-.develop-err,.name-site-err,.url-err,.email-err{
+
+input[type="checkbox"].error{
+    box-shadow: 0 0 3px red inset;
+}
+input[type="checkbox"].noterror{
+    box-shadow: 0 0 3px green inset; 
+}
+input[type="radio"].error{
+    box-shadow: 0 0 3px red inset;
+}
+input[type="radio"].noterror{
+    box-shadow: 0 0 3px green inset; 
+}
+.develop-err,.name-site-err,.url-err,.email-err,.checkbox-err,.radio-err{
     position: absolute;
     left: 520px;
     color: red;
