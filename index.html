@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ValidForm</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <p>Для внесения вашего сайта в каталог, заполните форму:</p>
+    <form action="" name="validForm" method="get">
+        <div class="div-content-box">
+            <label class="simple-input-label">
+                <span class="label-span">Разработчики: </span>
+                <input class="simple-input" type="text" name="develop">
+            </label>
+        </div>
+        <div class="div-content-box">
+            <label class="simple-input-label">
+                <span class="label-span">Название сайта: </span>
+                <input class="simple-input" type="text" name="name-site">
+            </label>
+        </div>
+        <div class="div-content-box">
+            <label class="simple-input-label">
+                <span class="label-span">URL сайта</span>
+                <input class="simple-input" type="text" name="url">
+            </label>
+        </div>
+        <div class="div-content-box">
+            <label>
+                <span class="label-span">Дата запуска сайта:</span>
+                <input class="simple-input" type="date" name="date">
+            </label>
+        </div>
+        <div class="div-content-box">
+            <label>
+                <span class="label-span">Посетителей в сутки:</span>
+                <input class="simple-input" type="number" name="colvo">
+            </label>
+        </div>
+        <div class="div-content-box">
+            <label class="simple-input-label">
+                <span class="label-span">E-mail для связи:</span>
+                <input class="simple-input" type="text" name="email">
+            </label>
+        </div>
+        <div class="div-content-box">
+            <label>
+                <span class="label-span">Рубрика каталога:</span>
+                <select name="katalog" size="1">
+                    <option value="1">здоровье</option>
+                    <option value="2">домашний уют</option>
+                    <option value="3" selected>бытовая техника</option>
+                </select>
+            </label>
+        </div>
+        <div class="div-content-box">
+            <label for="">
+                <span class="label-span">Размещение:</span>
+                <span class="span-box">
+                    <span class="span-content-box">
+                        <input type="radio" name="answer" value="1">
+                        <span>бесплатное</span>
+                    </span>
+                    <span class="span-content-box">
+                        <input type="radio" name="answer" value="2">
+                        <span>платное</span>
+                    </span>
+                    <span class="span-content-box">
+                        <input type="radio" name="answer" value="3">
+                        <span>VIP</span>
+                    </span>
+                </span>
+            </label>
+        </div>
+        <div class="div-content-box">
+            <label>
+                <span class="label-span">Разрешить отзывы:</span>
+                <input type="checkbox" checked>
+            </label>
+        </div>
+        <div class="div-content-box">
+            <label>
+                <span class="label-span">Описание сайта:</span>
+                <div>
+                    <textarea name="mytext" cols="30" rows="5"></textarea>
+                </div>
+            </label>
+        </div>
+        <div class="div-content-box">
+            <input type="submit" value="Опубликовать">
+        </div>
+    </form>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
