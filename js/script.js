@@ -21,8 +21,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function addFocusAndScroll() {
         const allErrors = document.querySelectorAll('.error');
-        allErrors.forEach(item=>{
-            if(item.name!="answer" || item.name!="checkbox"){
+        allErrors.forEach(item => {
+            if (item.name != "answer" || item.name != "checkbox") {
                 allErrors[0].focus();
                 allErrors[0].scrollIntoView();
             }
@@ -166,7 +166,6 @@ window.addEventListener('DOMContentLoaded', () => {
     inputRadio.forEach(item => {
         item.addEventListener('change', blurRadioInputs);
     });
-
     function blurRadioInputs(EO) {
         removeError("radio-err", spanContentBox);
         if (EO.target.name == "validForm") {
@@ -198,6 +197,4 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-
-
 });
