@@ -33,21 +33,28 @@ textarea{
 }
 
 input[type="checkbox"].error{
-    box-shadow: 0 0 3px red inset;
+    box-shadow: 0 0 5px red inset;
 }
 input[type="checkbox"].noterror{
-    box-shadow: 0 0 3px green inset; 
+    box-shadow: 0 0 5px green inset; 
 }
 input[type="radio"].error{
-    box-shadow: 0 0 3px red inset;
+    box-shadow: 0 0 5px red inset;
 }
 input[type="radio"].noterror{
-    box-shadow: 0 0 3px green inset; 
+    box-shadow: 0 0 5px green inset; 
 }
-.develop-err,.name-site-err,.url-err,.email-err,.checkbox-err,.radio-err{
+.develop-err,.name-site-err,.url-err,.email-err,.checkbox-err,
+.radio-err,.select-err{
     position: absolute;
     left: 520px;
     color: red;
+}
+.textarea-err{
+    color: red;
+    position: absolute;
+    left: 520px;
+    top: 360px;
 }
 .colvo-err,.date-err{
     position: absolute;
